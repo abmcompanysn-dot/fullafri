@@ -256,6 +256,52 @@ article[id] {
   transition: width 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 
+/* ---------- Formulaire / application ---------- */
+@keyframes fadeup {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fadeup {
+  animation: fadeup 0.38s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes shakeX {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-7px);
+  }
+  40% {
+    transform: translateX(7px);
+  }
+  60% {
+    transform: translateX(-5px);
+  }
+  80% {
+    transform: translateX(5px);
+  }
+}
+.shake {
+  animation: shakeX 0.4s ease both;
+}
+.ping-dot {
+  animation: pingDot 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes pingDot {
+  75%,
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   .rv {
@@ -268,6 +314,9 @@ article[id] {
   .flowline,
   .flowline-slow,
   .pulse-dot,
+  .ping-dot,
+  .animate-fadeup,
+  .shake,
   .caret {
     animation: none !important;
   }

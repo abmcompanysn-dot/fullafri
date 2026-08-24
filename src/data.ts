@@ -27,6 +27,7 @@ export const NAV = [
   { id: "s3", num: "03", title: "Schéma de base de données", short: "PostgreSQL" },
   { id: "s4", num: "04", title: "Plan du site & code source", short: "Site & Registre" },
   { id: "s5", num: "05", title: "Guide de déploiement", short: "Déploiement" },
+  { id: "s6", num: "06", title: "Application — demande d'audit", short: "Application" },
 ];
 
 export const SECTORS = [

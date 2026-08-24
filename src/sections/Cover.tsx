@@ -169,7 +169,7 @@ export default function Cover() {
 
       {/* Sommaire express */}
       <nav className="relative border-t border-paper/15" aria-label="Sommaire">
-        <div className="max-w-7xl mx-auto px-5 md:px-8 grid sm:grid-cols-2 lg:grid-cols-5">
+        <div className="max-w-7xl mx-auto px-5 md:px-8 grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-6">
           {NAV.map((n, i) => (
             <a
               key={n.id}

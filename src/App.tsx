@@ -6,6 +6,7 @@ import Architecture from "./sections/Architecture";
 import Database from "./sections/Database";
 import Registry from "./sections/Registry";
 import Deployment from "./sections/Deployment";
+import Application from "./sections/Application";
 
 const IDS = NAV.map((n) => n.id);
 
@@ -162,7 +163,7 @@ export default function App() {
       <Sidebar active={active} progress={progress} />
       <MobileBar active={active} progress={progress} />
 
-      <div className="xl:pl-[236px] pt-[86px] xl:pt-0">
+      <div className="xl:pl-[236px] pt-[94px] xl:pt-0">
         <Cover />
         <main>
           <Executive />
@@ -170,6 +171,7 @@ export default function App() {
           <Database />
           <Registry />
           <Deployment />
+          <Application />
         </main>
         <Footer />
       </div>
