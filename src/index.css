@@ -1,0 +1,281 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Archivo", "Public Sans", system-ui, sans-serif;
+  --font-body: "Public Sans", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  --color-paper: #f1ede0;
+  --color-parch: #e8e3d1;
+  --color-ink: #17211b;
+  --color-pine: #0e3b2e;
+  --color-pine-2: #0a2c22;
+  --color-pine-3: #07231b;
+  --color-moss: #2e6b4f;
+  --color-leaf: #1e7a4f;
+  --color-gold: #c2932c;
+  --color-gold-2: #e0be66;
+  --color-clay: #a63d22;
+  --color-clay-2: #c05a35;
+}
+
+html {
+  scrollbar-color: #0e3b2e #e8e3d1;
+}
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-pine-3);
+}
+
+section[id],
+article[id] {
+  scroll-margin-top: 84px;
+}
+
+/* ---------- Display type ---------- */
+.disp {
+  font-family: var(--font-display);
+  font-stretch: 122%;
+  font-weight: 800;
+  letter-spacing: -0.015em;
+}
+.disp-x {
+  font-family: var(--font-display);
+  font-stretch: 125%;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+.mono-k {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+/* ---------- Grain / security-paper texture ---------- */
+.noise::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.05;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.paper-lines {
+  background-image: repeating-linear-gradient(
+    0deg,
+    transparent 0px,
+    transparent 31px,
+    rgba(23, 33, 27, 0.045) 31px,
+    rgba(23, 33, 27, 0.045) 32px
+  );
+}
+
+/* ---------- Reveal on scroll ---------- */
+.rv {
+  opacity: 0;
+  transform: translateY(22px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.rv.on {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Ticker ---------- */
+@keyframes tickmove {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.ticker-track {
+  animation: tickmove 46s linear infinite;
+  will-change: transform;
+}
+.ticker:hover .ticker-track {
+  animation-play-state: paused;
+}
+
+/* ---------- Stamp rotation ---------- */
+@keyframes spin-slow {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.stamp-spin {
+  animation: spin-slow 70s linear infinite;
+  transform-origin: 50% 50%;
+}
+
+/* ---------- Architecture flow lines ---------- */
+@keyframes dashmove {
+  to {
+    stroke-dashoffset: -28;
+  }
+}
+.flowline {
+  stroke-dasharray: 7 7;
+  animation: dashmove 1.1s linear infinite;
+}
+.flowline-slow {
+  stroke-dasharray: 4 8;
+  animation: dashmove 1.8s linear infinite;
+}
+
+@keyframes pulse-dot {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.25;
+  }
+}
+.pulse-dot {
+  animation: pulse-dot 1.6s ease-in-out infinite;
+}
+
+/* ---------- Blink caret ---------- */
+@keyframes caret {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  50%,
+  95% {
+    opacity: 0;
+  }
+}
+.caret {
+  animation: caret 1.1s steps(1) infinite;
+}
+
+/* ---------- Hard-shadow buttons ---------- */
+.btn-hard {
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    background-color 0.15s ease,
+    color 0.15s ease;
+  box-shadow: 4px 4px 0 0 rgba(194, 147, 44, 0.9);
+}
+.btn-hard:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 7px 7px 0 0 rgba(194, 147, 44, 0.9);
+}
+.btn-hard:active {
+  transform: translate(1px, 1px);
+  box-shadow: 2px 2px 0 0 rgba(194, 147, 44, 0.9);
+}
+
+/* ---------- Tables ---------- */
+.tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+.tbl th {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 10px 12px;
+  background: var(--color-pine);
+  color: var(--color-paper);
+  border: 1px solid var(--color-pine);
+}
+.tbl td {
+  padding: 10px 12px;
+  border: 1px solid rgba(23, 33, 27, 0.22);
+  vertical-align: middle;
+}
+.tbl tbody tr {
+  transition: background-color 0.15s ease;
+}
+.tbl tbody tr:hover {
+  background: rgba(194, 147, 44, 0.09);
+}
+
+/* ---------- Code block ---------- */
+.codebox pre {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  line-height: 1.65;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #2e6b4f #07231b;
+}
+.codebox pre::-webkit-scrollbar {
+  height: 8px;
+  width: 8px;
+}
+.codebox pre::-webkit-scrollbar-thumb {
+  background: #2e6b4f;
+}
+.codebox pre::-webkit-scrollbar-track {
+  background: #07231b;
+}
+.tok-com {
+  color: #6f8f7f;
+  font-style: italic;
+}
+.tok-str {
+  color: #e0be66;
+}
+.tok-kw {
+  color: #7fd0a8;
+  font-weight: 600;
+}
+.tok-num {
+  color: #d9a05b;
+}
+
+/* ---------- Criteria bars ---------- */
+.bar-fill {
+  transition: width 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .rv {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .ticker-track,
+  .stamp-spin,
+  .flowline,
+  .flowline-slow,
+  .pulse-dot,
+  .caret {
+    animation: none !important;
+  }
+  .bar-fill,
+  .btn-hard {
+    transition: none;
+  }
+  * {
+    scroll-behavior: auto !important;
+  }
+}
